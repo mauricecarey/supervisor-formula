@@ -1,11 +1,12 @@
 
-python-pip:
-  pkg.installed
+supervisor-python-pip:
+  pkg.installed:
+    - name: python-pip
 
 supervisor:
   pip.installed:
     - require:
-      - pkg: python-pip
+      - pkg: supervisor-python-pip
 
   service.running:
     - enable: True
