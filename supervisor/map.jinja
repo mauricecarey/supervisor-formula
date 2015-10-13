@@ -1,0 +1,8 @@
+{% import_yaml "supervisor/defaults.yaml" as defaults %}
+
+{% set lookup = salt['pillar.get']('supervisor:lookup',
+                                   default=defaults.supervisor,
+                                   merge=True) %}
+
+{# merge the actual supervisor pillar into the above combined dict #}
+{% set supervisor = salt['pillar.get']('supervisor', default=lookup, merge=True) %}

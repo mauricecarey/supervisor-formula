@@ -1,3 +1,4 @@
+{% from "supervisor/map.jinja" import supervisor with context %}
 
 supervisor-python-pip:
   pkg.installed:
@@ -50,7 +51,7 @@ supervisor-default-file:
 
 supervisor-conf-dir:
   file.directory:
-    - name: /etc/supervisor/conf.d
+    - name: {{ supervisor.conf_dir }}
     - user: root
     - group: root
     - mode: 775
